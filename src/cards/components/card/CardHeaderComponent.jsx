@@ -1,14 +1,12 @@
-import React from 'react'
-import { CardHeader } from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
-import Divider from "@mui/material/Divider";
+import { CardHeader, CardMedia, Divider } from "@mui/material";
+import React from "react";
 
 export default function CardHeaderComponent({ image, alt, title, subtitle }) {
-    return (
-        <>
-            <CardMedia sx={{ height: 140 }} image={image} alt={alt} />
-            <CardHeader title={title} subheader={subtitle} />
-            <Divider variant="middle" />
-        </>
-    );
+  return (
+    <>
+      <CardMedia sx={{ height: 140 }} image={image} alt={alt} />
+      <CardHeader title={title} subheader={subtitle} />
+      <Divider variant="middle" />
+    </>
+  );
 }

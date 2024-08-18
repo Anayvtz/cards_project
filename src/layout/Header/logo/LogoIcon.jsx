@@ -3,15 +3,14 @@ import React from "react";
 import NavBarLink from "../../../routes/components/NavBarLink";
 import ROUTES from "../../../routes/RoutesModel";
 
-
 export default function LogoIcon() {
-    return (
-        <>
-            <NavBarLink to={ROUTES.ROOT}>
-                <IconButton>
-                    <Avatar src="/bcard.png" alt="Business card icon" />
-                </IconButton>
-            </NavBarLink>
-        </>
-    );
+  return (
+    <>
+      <NavBarLink to={ROUTES.ROOT}>
+        <IconButton>
+          <Avatar src="/images/business-card.png" alt="Business card icon" />
+        </IconButton>
+      </NavBarLink>
+    </>
+  );
 }

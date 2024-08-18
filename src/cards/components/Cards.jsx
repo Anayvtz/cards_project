@@ -1,14 +1,21 @@
-import React from 'react'
-import CardComponent from "./card/CardComponent.jsx";
-import { Container } from '@mui/material';
-
+import CardComponent from "./card/CardComponent";
+import { Container } from "@mui/material";
 
 export default function Cards({ cards, handleDelete, handleLike }) {
-    const handleEdit = (id) => { console.log(`the card ${id} is edited `); }
-    return (
-        <Container sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-            {cards?.map(item => <CardComponent card={item} key={item._id} onEdit={handleEdit} onDelete={handleDelete} onLike={handleLike} />)}
-
-        </Container>
-    )
+  const handleEdit = (id) => {
+    console.log("editing card " + id);
+  };
+  return (
+    <Container sx={{ display: "flex", flexWrap: "wrap" }}>
+      {cards.map((card) => (
+        <CardComponent
+          card={card}
+          key={card._id}
+          handleDelete={handleDelete}
+          handleLike={handleLike}
+          handleEdit={handleEdit}
+        />
+      ))}
+    </Container>
+  );
 }

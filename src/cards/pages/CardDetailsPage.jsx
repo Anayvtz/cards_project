@@ -12,9 +12,16 @@ import {
 
 import useCards from "../hooks/useCards";
 
-import Spinner from "../../Components/Spinner";
+
+
+
+
+
+
+
 import PageHeader from "../../Components/PageHeader";
 import Error from "../../Components/Error";
+import Spinner from "../../Components/Spinner";
 
 export default function CardDetailsPage() {
     const { card, isLoading, error, getCardById } = useCards();

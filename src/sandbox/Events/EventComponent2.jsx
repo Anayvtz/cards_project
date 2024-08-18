@@ -1,14 +1,16 @@
-import { Button } from '@mui/material';
-
+import { Button } from "@mui/material";
+import React from "react";
 
 export default function EventComponent2() {
-    const handleClick = (event) => {
-        console.log(Event); console.log(event.target.value);
-    }
-    return (
-        <div>
-            <Button variant="contained" onClick={handleClick}>click the button</Button>
-            <Button variant="contained" onClick={(e) => console.log(e.target.textContent)}>click the button</Button>
-        </div>
-    )
+  return (
+    <div>
+      <Button
+        onClick={(event) => {
+          console.log(event.target.textContent);
+        }}
+      >
+        Click me!!!
+      </Button>
+    </div>
+  );
 }

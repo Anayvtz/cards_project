@@ -1,11 +1,11 @@
-import { Typography } from '@mui/material'
-import React from 'react'
-import GrandChild from './GrandChild'
+import React from "react";
+import GrandChild from "./GrandChild";
 
 export default function Child() {
-    return (
-        <div><Typography>Child</Typography>
-            <GrandChild />
-        </div>
-    )
+  return (
+    <div>
+      this is child
+      <GrandChild />
+    </div>
+  );
 }

@@ -1,38 +1,33 @@
-import { Button, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { useSnack } from '../../providers/SnackbarProvider';
+import { Button, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import useCounter from "../hooks/useCounter";
 
 export default function Timer() {
-    const [seconds, setSeconds] = useState(0);
-    const [isActive, setIsActive] = useState(false);
-    const [intervalId, setIntervalId] = useState(0);
-    const data = useSnack();
-    console.log(data);
-    data("success", "hello");
+  const { counter, increment, handleReset } = useCounter();
+  const [isActive, setIsActive] = useState(false);
 
-    // data.setIsDisplayBox(true);
-    useEffect(() => {
-        if (isActive == false) {
-            clearInterval(intervalId);
-            return;
-        }
-        setIntervalId(setInterval(() => { setSeconds(prev => prev + 1) }, 1000));
-    }, [isActive]);
-    const handleStart = () => {
-        setIsActive(true);
-    }
-    const handleStop = () => {
-        setIsActive(false);
-    }
-    const handleReset = () => {
-        setSeconds(0);
-    }
-    return (
-        <div>
-            <Typography>{seconds}</Typography>
-            <Button variant="contained" onClick={handleStart}>Start</Button>
-            <Button variant="contained" onClick={handleStop}>Stop</Button>
-            <Button variant="contained" onClick={handleReset}>Reset</Button>
-        </div>
-    )
+  useEffect(() => {
+    if (!isActive) return;
+
+    const myInterval = setInterval(increment, 1000);
+
+    return () => clearInterval(myInterval);
+  }, [isActive]);
+
+  return (
+    <div>
+      <Typography>{counter}</Typography>
+      <Button onClick={() => setIsActive((prev) => !prev)}>
+        {isActive ? "Stop" : "Start"}
+      </Button>
+      <Button
+        onClick={() => {
+          handleReset();
+          setIsActive(false);
+        }}
+      >
+        Reset
+      </Button>
+    </div>
+  );
 }

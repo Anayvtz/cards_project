@@ -3,22 +3,21 @@ import { Typography } from "@mui/material";
 import NavBarLink from "../../../routes/components/NavBarLink";
 import ROUTES from "../../../routes/RoutesModel";
 
-
 export default function Logo() {
-    return (
-        <>
-            <NavBarLink to={ROUTES.ROOT}>
-                <Typography
-                    variant="h4"
-                    sx={{
-                        marginRight: 2,
-                        fontFamily: "fantasy",
-                        display: { xs: "none", md: "inline-flex" },
-                    }}
-                >
-                    BCard
-                </Typography>
-            </NavBarLink>
-        </>
-    );
+  return (
+    <>
+      <NavBarLink to={ROUTES.ROOT}>
+        <Typography
+          variant="h4"
+          sx={{
+            marginRight: 2,
+            fontFamily: "fantasy",
+            display: { xs: "none", md: "inline-flex" },
+          }}
+        >
+          BCard
+        </Typography>
+      </NavBarLink>
+    </>
+  );
 }

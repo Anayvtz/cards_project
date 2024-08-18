@@ -1,10 +1,14 @@
-import React from 'react'
-import PageHeader from '../../Components/PageHeader'
+import React from "react";
+import PageHeader from "../../Components/PageHeader";
 
 export default function FavoriteCards() {
-    return (
-        <div>
-            <PageHeader title="Favorite" subtitle="welcome to my favorite" />
-        </div>
-    )
+  return (
+    <>
+      <PageHeader
+        title={"Favorite cards"}
+        subtitle={"Welcome to favorite cards page"}
+      />
+      Here you will find the favorite cards
+    </>
+  );
 }

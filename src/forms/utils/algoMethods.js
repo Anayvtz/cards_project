@@ -1,4 +1,8 @@
-export function makeFirstLetterCapital(str) {
-    if (str.length == 0) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-}
+export const makeFirstLetterCapital = (input) => {
+  if (typeof input !== "string" || input.length === 0) {
+    return input;
+  }
+  return input[0].toUpperCase() + input.slice(1).toLowerCase();
+};
+
+//write and export makeFirstLetterCapital(string)=>string

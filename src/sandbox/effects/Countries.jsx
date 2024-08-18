@@ -2,39 +2,43 @@ import { CircularProgress, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 export default function Countries() {
-    const [allCountries, setAllCountries] = useState([]);
-    const [text, setText] = useState("");
-    const [filteredCountries, setFilteredCountries] = useState([]);
+  const [allCountries, setAllCountries] = useState([]);
+  const [filteredAllCountries, setFilteredAllCountries] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-    useEffect(() => {
-        const getCountries = async () => {
-            let response = await fetch("https://restcountries.com/v3.1/all");
-            let data = await response.json();
-            console.log(data);
-            setAllCountries(data);
-            setFilteredCountries(data);
-        };
-        getCountries();
-    }, []);
-    useEffect(() => {
-        setFilteredCountries(allCountries.filter((item) => item.name.common.includes(text)));
-    }, [text]);
+  useEffect(() => {
+    const getCountries = async () => {
+      let response = await fetch("https://restcountries.com/v3.1/all");
+      let data = await response.json();
+      console.log(data);
+      setAllCountries(data);
+      setFilteredAllCountries(data);
+    };
 
-    if (allCountries.length === 0) {
-        return <CircularProgress />;
-    }
+    getCountries();
+  }, []);
 
-    const handleChange = (e) => {
-        setText(e.target.value);
-    }
-
-
-    return (
-        <div>
-            <TextField label="enter country" value={text} onChange={handleChange} />
-            {filteredCountries.map((country) => (
-                <Typography>{country.name.common}</Typography>
-            ))}
-        </div>
+  useEffect(() => {
+    setFilteredAllCountries(
+      allCountries.filter((c) =>
+        c.name.common.toLowerCase().includes(searchText.toLowerCase())
+      )
     );
+  }, [searchText]);
+
+  if (allCountries.length === 0) {
+    return <CircularProgress />;
+  }
+  return (
+    <div>
+      <TextField
+        value={searchText}
+        onChange={(e) => setSearchText(e.target.value)}
+      />
+
+      {filteredAllCountries.map((country) => (
+        <Typography key={country.name.common}>{country.name.common}</Typography>
+      ))}
+    </div>
+  );
 }

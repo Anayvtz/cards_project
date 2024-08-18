@@ -3,7 +3,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import useForm from "../../forms/hooks/useForm";
 
-import { useUser } from "../../users/providers/UserProvider";
+import { useCurrentUser } from "../../users/providers/UserProvider";
 import CardForm from "../components/CardForm";
 import initialCardForm from "../helpers/initialForms/initialCardForm";
 import normalizeCard from "../helpers/normalization/normalizeCard";
@@ -12,22 +12,13 @@ import cardSchema from "../models/cardSchema";
 import ROUTES from "../../routes/RoutesModel";
 
 export default function AddCardPage() {
-    /*  const { handleCreateCard } = useCards();
-  */
-    //user - useUser (provider)
-    const { user } = useUser();
-    //useForm (initialForm,schema,onSubmit)
-    const { value, setData, ...rest } = useForm(
+    const { user } = useCurrentUser();
+
+    const { data, setData, errors, ...rest } = useForm(
         initialCardForm,
         cardSchema,
         () => {
             console.log("card details:");
-
-            /*   handleCreateCard({
-                  ...normalizeCard({ ...value.data }),
-                  user_id: user._id,
-                  likes: [],
-              }); */
         }
     );
     //useEffect - update the form data to this card data
@@ -47,10 +38,10 @@ export default function AddCardPage() {
                 title="add card"
                 onSubmit={rest.onSubmit}
                 onReset={rest.handleReset}
-                errors={value.errors}
+                errors={errors}
                 onFormChange={rest.validateForm}
                 onInputChange={rest.handleChange}
-                data={value.data}
+                data={data}
             />
         </Container>
     );

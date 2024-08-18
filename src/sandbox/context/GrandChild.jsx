@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
-import { useData } from './DataProvider'
-/* import { MyContext } from './GrandParent' */
+import React from "react";
+import { useData } from "./DataProvider";
 
 export default function GrandChild() {
-    /*  const context = useContext(MyContext); */
-    const result = useData();
-    return (
-        <div>GrandChild {context.data1}</div>
-    )
+  const data = useData();
+
+  return <div>this is grand child</div>;
 }
