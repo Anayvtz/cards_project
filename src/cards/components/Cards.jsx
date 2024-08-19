@@ -1,5 +1,7 @@
+import AddNewCardButton from "./AddNewCardButton";
 import CardComponent from "./card/CardComponent";
-import { Container } from "@mui/material";
+import { Container, Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 export default function Cards({ cards, handleDelete, handleLike }) {
   const handleEdit = (id) => {
@@ -16,6 +18,11 @@ export default function Cards({ cards, handleDelete, handleLike }) {
           handleEdit={handleEdit}
         />
       ))}
+      {/* <Fab color="primary"> */}
+      {/* <AddIcon> */}
+      <AddNewCardButton />
+      {/* </AddIcon> */}
+      {/* </Fab> */}
     </Container>
   );
 }
