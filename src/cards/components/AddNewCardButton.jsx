@@ -11,7 +11,7 @@ export default function AddNewCardButton() {
     }
     return (
         <div>
-            <Button variant="contained" sx={{ borderRadius: "50%" }} onClick={handleClick}>+</Button>
+            <Button variant="contained" sx={{ borderRadius: "50%", aspectRatio: "1/1" }} onClick={handleClick}>+</Button>
         </div>
     )
 }
