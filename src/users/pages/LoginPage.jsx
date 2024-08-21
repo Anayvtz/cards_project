@@ -15,9 +15,7 @@ import { jwtDecode } from "jwt-decode";
 import useUsers from "../hooks/useUsers";
 import { useSnack } from "../../providers/SnackbarProvider";
 
-const handleLogin = async (userLogin) => {
-  console.log(userLogin);
-};
+
 
 export default function LoginPage() {
   const { isLoading, error, handleLogin } = useUsers();

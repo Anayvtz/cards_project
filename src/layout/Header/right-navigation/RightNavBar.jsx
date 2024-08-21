@@ -6,6 +6,7 @@ import LightModeIcon from "@mui/icons-material/LightMode";
 import { useCurrentUser } from "../../../users/providers/UserProvider";
 import Logged from "./Logged";
 import NotLogged from "./NotLogged";
+import Logout from "./Logout";
 
 export default function RightNavbar() {
   const { user } = useCurrentUser();
@@ -22,6 +23,7 @@ export default function RightNavbar() {
       </IconButton>
 
       {user ? <Logged /> : <NotLogged />}
+      {user ? <Logout /> : null}
     </Box>
   );
 }

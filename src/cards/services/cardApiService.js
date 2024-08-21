@@ -1,21 +1,15 @@
 import axios from "axios";
-const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/users";
-export const login = async (userLogin) => {
-    try {
-        const response = await axios.post(apiUrl + "/login", userLogin);
-        const data = response.data;
-        return data;
-    } catch (err) {
-        throw new Error(err.message);
-    }
-};
 
-export const signup = async (normalizeUser) => {
+
+const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2";
+
+export const createCard = async (card) => {
+
     try {
-        const { data } = await axios.post(apiUrl, normalizeUser);
+        const { data } = await axios.post(`${apiUrl}/cards`, card);
         return data;
-    }
-    catch (error) {
+    } catch (error) {
+        console.log("in create card:" + error.message);
         console.error("Error making request:", error.message); // Log error message
         if (error.response) {
             // The request was made and the server responded with a status code
@@ -30,6 +24,8 @@ export const signup = async (normalizeUser) => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
+        /* return Promise.reject(error.message); */
         throw new Error(error.message);
     }
+    return null;
 };

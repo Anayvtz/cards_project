@@ -7,12 +7,14 @@ import initialSignupForm from "../helpers/initialForms/initialSignupForm";
 import signupSchema from "../models/signupSchema";
 import { Container } from "@mui/material";
 import SignupForm from "../components/SignupForm";
+import useUsers from "../hooks/useUsers";
 
 const handleSignup = (userDetails) => {
   console.log(userDetails);
 };
 
 export default function SignupPage() {
+  const { handleRegister } = useUsers();
   const {
     data,
     errors,
@@ -21,7 +23,7 @@ export default function SignupPage() {
     validateForm,
     onSubmit,
     handleChangeCheckBox,
-  } = useForm(initialSignupForm, signupSchema, handleSignup);
+  } = useForm(initialSignupForm, signupSchema, handleRegister);
 
   const { user } = useCurrentUser();
 

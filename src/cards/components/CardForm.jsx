@@ -17,7 +17,7 @@ const CardForm = ({
             onSubmit={onSubmit}
             onReset={onReset}
             errors={errors}
-            onChange={onFormChange}
+            validateForm={onFormChange}
             styles={{ maxWidth: "800px" }}
             title={title}
         >

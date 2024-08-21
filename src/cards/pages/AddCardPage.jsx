@@ -13,12 +13,17 @@ import ROUTES from "../../routes/RoutesModel";
 
 export default function AddCardPage() {
     const { user } = useCurrentUser();
+    const { handleCreateCard } = useCards();
 
     const { data, setData, errors, ...rest } = useForm(
         initialCardForm,
         cardSchema,
         () => {
-            console.log("card details:");
+            handleCreateCard({
+                ...normalizeCard({ ...data }),
+                user_id: user._id,
+                /* likes: [], */
+            });
         }
     );
     //useEffect - update the form data to this card data
