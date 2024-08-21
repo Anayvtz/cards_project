@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   /* changeLikeStatus, */
   createCard,
+  getMyCards,
   /*  deleteCard,
    editCard,
    getCard,
@@ -76,6 +77,17 @@ export default function useCards() {
     },
     [setSnack, navigate]
   );
+  const handleGetMyCards = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const cards = await getMyCards();
+      requestStatus(false, null, cards);
+    } catch (error) {
+      requestStatus(false, error, null);
+      setSnack("error", error.message);
+    }
+  }, [setSnack]);
+
   const handleDelete = useCallback((id) => {
     console.log("Card " + id + " deleted");
   }, []);
@@ -94,5 +106,6 @@ export default function useCards() {
     handleDelete,
     handleLike,
     handleCreateCard,
+    handleGetMyCards,
   };
 }

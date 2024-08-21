@@ -2,8 +2,10 @@ import AddNewCardButton from "./AddNewCardButton";
 import CardComponent from "./card/CardComponent";
 import { Container, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { useCurrentUser } from "../../users/providers/UserProvider";
 
 export default function Cards({ cards, handleDelete, handleLike }) {
+  const user = useCurrentUser();
   const handleEdit = (id) => {
     console.log("editing card " + id);
   };
@@ -20,7 +22,8 @@ export default function Cards({ cards, handleDelete, handleLike }) {
       ))}
       {/* <Fab color="primary"> */}
       {/* <AddIcon> */}
-      <AddNewCardButton />
+      {console.log(user)}
+      {(user.isBusiness || user.isAdmin) ? <AddNewCardButton /> : null}
       {/* </AddIcon> */}
       {/* </Fab> */}
     </Container>
