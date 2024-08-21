@@ -10,10 +10,10 @@ import AddNewCardButton from '../components/AddNewCardButton';
 
 
 export default function MyCardsPage() {
-  const { cards, error, handleGetMyCards, handleDelete, handleLike } =
+  const { cards, error, isLoading, handleGetMyCards, handleDelete, handleLike } =
     useCards();
 
-  const isLoading = false;
+
 
   const { user } = useCurrentUser();
   const navigate = useNavigate();

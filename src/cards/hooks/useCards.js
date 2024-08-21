@@ -5,12 +5,13 @@ import { useNavigate } from "react-router-dom";
 import {
   /* changeLikeStatus, */
   createCard,
+  deleteCard,
   getMyCards,
-  /*  deleteCard,
+  /*  
    editCard,
    getCard,
    getCards,
-   getMyCards, */
+    */
 } from "../services/cardApiService";
 import useAxios from "../../hooks/useAxios.js";
 import ROUTES from "../../routes/RoutesModel.js";
@@ -88,10 +89,17 @@ export default function useCards() {
     }
   }, [setSnack]);
 
-  const handleDelete = useCallback((id) => {
-    console.log("Card " + id + " deleted");
-  }, []);
 
+  const handleDelete = useCallback(async (cardId) => {
+    try {
+      setIsLoading(true);
+      await deleteCard(cardId);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+    }
+  }, []);
   const handleLike = useCallback((id) => {
     console.log("Card " + id + " has been liked");
   }, []);
