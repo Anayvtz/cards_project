@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useSnack } from "../../providers/SnackbarProvider";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   /* changeLikeStatus, */
   createCard,
@@ -23,9 +23,25 @@ export default function useCards() {
   const [card, setCard] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const [filterCards, setFilterCards] = useState(null);
+  const [query, setQuery] = useState("");
+  const [searchParams] = useSearchParams();
 
   const setSnack = useSnack();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setQuery(searchParams.get("q") ?? "");
+  }, [searchParams]);
+  useEffect(() => {
+    if (cards)
+      setFilterCards(
+        cards.filter(
+          (card) =>
+            card.title.includes(query) || String(card.bizNumber).includes(query)
+        )
+      );
+  }, [cards, query]);
 
   const requestStatus = (loading, errorMessage, cards, card = null) => {
     setIsLoading(loading);
@@ -138,6 +154,7 @@ export default function useCards() {
   return {
     cards,
     card,
+    filterCards,
     error,
     isLoading,
     getAllCards,

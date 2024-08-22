@@ -10,7 +10,7 @@ import AddNewCardButton from '../components/AddNewCardButton';
 
 
 export default function MyCardsPage() {
-  const { cards, error, isLoading, handleGetMyCards, handleDelete, handleLike } =
+  const { cards, filterCards, error, isLoading, handleGetMyCards, handleDelete, handleLike } =
     useCards();
 
 
@@ -41,7 +41,7 @@ export default function MyCardsPage() {
         <CardsFeedback
           isLoading={isLoading}
           error={error}
-          cards={cards}
+          cards={filterCards}
           handleDelete={handleDel}
           handleLike={handleLike}
 

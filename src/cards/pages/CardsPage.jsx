@@ -7,7 +7,7 @@ import { useSnack } from "../../providers/SnackbarProvider";
 import useCards from "../hooks/useCards";
 
 export default function CardsPage() {
-  const { cards, error, isLoading, getAllCards, handleDelete, handleLike } =
+  const { cards, filterCards, error, isLoading, getAllCards, handleDelete, handleLike } =
     useCards();
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function CardsPage() {
         subtitle="On this page you can find all bussines cards from all categories"
       />
       <CardsFeedback
-        cards={cards}
+        cards={filterCards}
         isLoading={isLoading}
         error={error}
         handleDelete={handleDelete}

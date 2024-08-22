@@ -10,9 +10,9 @@ import AddNewCardButton from '../components/AddNewCardButton';
 
 
 export default function MyCards() {
-    const { value, handleGetMyCards, handleDelete, handleLike } =
+    const { filterCards, error, isLoading, handleGetMyCards, handleDelete, handleLike } =
         useCards();
-    const { filterCards, error, isLoading } = value;
+
 
     const { user } = useCurrentUser();
     const navigate = useNavigate();
