@@ -6,9 +6,11 @@ import {
   /* changeLikeStatus, */
   createCard,
   deleteCard,
+  editCard,
+  getCard,
   getMyCards,
   /*  
-   editCard,
+   
    getCard,
    getCards,
     */
@@ -100,6 +102,35 @@ export default function useCards() {
       setError(error);
     }
   }, []);
+
+  const handleUpdateCard = useCallback(
+    async (cardId, cardFromClient) => {
+      try {
+        setIsLoading(true);
+        const card = await editCard(cardId, cardFromClient);
+        requestStatus(false, null, null, card);
+        setSnack("success", "The business card has been successfully updated");
+        setTimeout(() => {
+          navigate(ROUTES.ROOT);
+        }, 1000);
+      } catch (error) {
+        requestStatus(false, error, null);
+      }
+    },
+    [setSnack, navigate]
+  );
+
+  const handleGetCard = useCallback(async (cardId) => {
+    try {
+      setIsLoading(true);
+      const card = await getCard(cardId);
+      requestStatus(false, null, null, card);
+      return card;
+    } catch (error) {
+      requestStatus(false, error, null);
+    }
+  }, []);
+
   const handleLike = useCallback((id) => {
     console.log("Card " + id + " has been liked");
   }, []);
@@ -115,5 +146,7 @@ export default function useCards() {
     handleLike,
     handleCreateCard,
     handleGetMyCards,
+    handleUpdateCard,
+    handleGetCard,
   };
 }

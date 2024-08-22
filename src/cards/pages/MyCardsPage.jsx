@@ -44,6 +44,7 @@ export default function MyCardsPage() {
           cards={cards}
           handleDelete={handleDel}
           handleLike={handleLike}
+
         />
         <AddNewCardButton />
       </Container>

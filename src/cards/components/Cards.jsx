@@ -4,11 +4,11 @@ import { Container, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { useCurrentUser } from "../../users/providers/UserProvider";
 
-export default function Cards({ cards, handleDelete, handleLike }) {
+export default function Cards({ cards, handleDelete, handleLike, handleEdit }) {
   const user = useCurrentUser();
-  const handleEdit = (id) => {
-    console.log("editing card " + id);
-  };
+  /*  const handleEdit = (id) => {
+     console.log("editing card " + id);
+   }; */
   return (
     <Container sx={{ display: "flex", flexWrap: "wrap" }}>
       {cards.map((card) => (
@@ -20,12 +20,10 @@ export default function Cards({ cards, handleDelete, handleLike }) {
           handleEdit={handleEdit}
         />
       ))}
-      {/* <Fab color="primary"> */}
-      {/* <AddIcon> */}
+
       {console.log(user)}
-      {(user.isBusiness || user.isAdmin) ? <AddNewCardButton /> : null}
-      {/* </AddIcon> */}
-      {/* </Fab> */}
+      {(user?.user?.isBusiness || user?.user?.isAdmin) ? <AddNewCardButton /> : null}
+
     </Container>
   );
 }

@@ -26,7 +26,7 @@ export default function MyCards() {
     }, [user, handleGetMyCards, navigate]);
 
     const handleDel = async (id) => {
-        await handleDeleteCard(id);
+        await handleDelete(id);
         await handleGetMyCards();
     };
 
@@ -43,6 +43,7 @@ export default function MyCards() {
                     cards={filterCards}
                     handleDelete={handleDel}
                     handleLike={handleLike}
+
                 />
                 <AddNewCardButton />
             </Container>
