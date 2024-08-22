@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { useCurrentUser } from "../providers/UserProvider";
 import { useNavigate } from "react-router-dom";
 import { login, signup } from "../services/usersApiService";
-import { getUser, removeToken, setTokenInLocalStorage } from "../services/localStorageService";
+import { getUser, removeEmail, removeToken, setEmailInLocalStorage, setTokenInLocalStorage } from "../services/localStorageService";
 import ROUTES from "../../routes/RoutesModel";
 import { useSnack } from "../../providers/SnackbarProvider";
 import normalizeUser from "../helpers/normalization/normalizeUser";
@@ -22,6 +22,7 @@ export default function useUsers() {
             setTokenInLocalStorage(token);
             setToken(token);
             setUser(getUser());
+            setEmailInLocalStorage(userLogin.email);
             navigate(ROUTES.CARDS);
         } catch (error) {
             console.error("Error making request:", error.message); // Log error message
@@ -45,6 +46,7 @@ export default function useUsers() {
     }, []);
 
     const handleLogout = () => {
+        removeEmail();
         removeToken();
         setUser(null);
     }

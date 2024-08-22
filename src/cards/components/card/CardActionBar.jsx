@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import CallIcon from "@mui/icons-material/Call";
@@ -15,29 +15,40 @@ export default function CardActionBar({
   handleDelete,
   handleLike,
   phone,
+  likes,
+  user_id,
 }) {
   const user = useCurrentUser();
+  const [isLiked, setIsLiked] = useState(() => likes.includes(user?.user?._id));
   const navigate = useNavigate();
+
+  const handleLikeCard = async () => {
+    await handleLike(cardId);
+    setIsLiked((prev) => !prev);
+  };
+
   return (
     <CardActions sx={{ justifyContent: "space-between" }}>
-      <Box>
-        <IconButton onClick={() => handleDelete(cardId)}>
-          <DeleteIcon />
-        </IconButton>
+      {user?.user?.isAdmin || user?.user?._id === user_id ? (
+        <Box>
 
-        <IconButton onClick={() => navigate(`${ROUTES.EDIT_CARD}/${cardId}`)}>
-          <ModeEditIcon />
-        </IconButton>
-      </Box>
+          <IconButton onClick={() => handleDelete(cardId)}>
+            <DeleteIcon />
+          </IconButton>
+
+          <IconButton onClick={() => navigate(`${ROUTES.EDIT_CARD}/${cardId}`)}>
+            <ModeEditIcon />
+          </IconButton>
+        </Box>) : null}
       <Box>
         <a href={"tel:" + phone}>
           <IconButton>
             <CallIcon />
           </IconButton>
         </a>
-        <IconButton onClick={() => handleLike(cardId)}>
-          <FavoriteIcon />
-        </IconButton>
+        {user && (<IconButton aria-label="Add to favorite" onClick={handleLikeCard}>
+          <FavoriteIcon color={isLiked ? "error" : "inherit"} />
+        </IconButton>)}
       </Box>
     </CardActions >
   );

@@ -3,13 +3,14 @@ import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { createContext } from "react";
-import { getToken, getUser } from "../services/localStorageService";
+import { getEmail, getToken, getUser } from "../services/localStorageService";
 
 const UserContext = createContext();
 
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(getToken());
+  const [email, setEmail] = useState(getEmail());
   useEffect(() => {
     if (!user) {
       const userFromLocalStorage = getUser();
@@ -17,7 +18,7 @@ export default function UserProvider({ children }) {
     }
   }, [user]);
   return (
-    <UserContext.Provider value={{ user, setUser, token, setToken }}>
+    <UserContext.Provider value={{ user, setUser, token, setToken, email, setEmail }}>
       {children}
     </UserContext.Provider>
   );

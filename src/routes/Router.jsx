@@ -14,6 +14,7 @@ import SandboxPage from "../sandbox/SandBoxPage";
 import AddCardPage from "../cards/pages/AddCardPage";
 import EditCardPage from "../cards/pages/EditCardPage";
 
+
 export default function Router() {
     return (
         <Routes>
@@ -27,6 +28,7 @@ export default function Router() {
             <Route path={ROUTES.CARD_INFO + "/:id"} element={<CardDetailsPage />} />
             <Route path={ROUTES.CREATE_CARD} element={<AddCardPage />} />
             <Route path={ROUTES.MY_CARDS} element={<MyCardsPage />} />
+            <Route path={ROUTES.FAV_CARDS} element={<FavoriteCards />} />
             <Route path={ROUTES.EDIT_CARD + "/:id"} element={<EditCardPage />} />
             <Route path={ROUTES.SANDBOX} element={<SandboxPage />} />
 

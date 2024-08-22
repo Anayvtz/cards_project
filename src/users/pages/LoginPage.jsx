@@ -18,7 +18,7 @@ import { useSnack } from "../../providers/SnackbarProvider";
 
 
 export default function LoginPage() {
-  const { isLoading, error, handleLogin } = useUsers();
+  const { handleLogin } = useUsers();
   const { data, errors, handleChange, handleReset, validateForm, onSubmit } =
     useForm(initialLoginForm, loginSchema, handleLogin);
 

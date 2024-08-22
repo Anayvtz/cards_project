@@ -1,22 +1,19 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSnack } from "../../providers/SnackbarProvider";
 import axios from "axios";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import {
-  /* changeLikeStatus, */
+  changeLikeStatus,
   createCard,
   deleteCard,
   editCard,
   getCard,
+  getCards,
   getMyCards,
-  /*  
-   
-   getCard,
-   getCards,
-    */
 } from "../services/cardApiService";
 import useAxios from "../../hooks/useAxios.js";
 import ROUTES from "../../routes/RoutesModel.js";
+import { useCurrentUser } from "../../users/providers/UserProvider.jsx";
 
 export default function useCards() {
   const [cards, setCards] = useState([]);
@@ -27,6 +24,7 @@ export default function useCards() {
   const [query, setQuery] = useState("");
   const [searchParams] = useSearchParams();
 
+  const user = useCurrentUser();
   const setSnack = useSnack();
   const navigate = useNavigate();
 
@@ -147,9 +145,28 @@ export default function useCards() {
     }
   }, []);
 
-  const handleLike = useCallback((id) => {
-    console.log("Card " + id + " has been liked");
-  }, []);
+  const handleLike = useCallback(
+    async (cardId) => {
+      try {
+        await changeLikeStatus(cardId);
+        setSnack("success", "The business card has been Liked");
+      } catch (error) {
+        requestStatus(false, error, null);
+      }
+    },
+    [setSnack]
+  );
+
+  const handleGetFavCards = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const cards = await getCards();
+      const favCards = cards.filter((card) => card.likes.includes(user?.user?._id));
+      requestStatus(false, null, favCards);
+    } catch (error) {
+      requestStatus(false, error, null);
+    }
+  }, [user]);
 
   return {
     cards,
@@ -165,5 +182,6 @@ export default function useCards() {
     handleGetMyCards,
     handleUpdateCard,
     handleGetCard,
+    handleGetFavCards,
   };
 }
