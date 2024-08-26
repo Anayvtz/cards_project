@@ -6,9 +6,7 @@ import { useCurrentUser } from "../../users/providers/UserProvider";
 
 export default function Cards({ cards, handleDelete, handleLike, handleEdit }) {
   const user = useCurrentUser();
-  /*  const handleEdit = (id) => {
-     console.log("editing card " + id);
-   }; */
+
   return (
     <Container sx={{ display: "flex", flexWrap: "wrap" }}>
       {cards.map((card) => (

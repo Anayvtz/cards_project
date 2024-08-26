@@ -22,7 +22,7 @@ export default function AddCardPage() {
             handleCreateCard({
                 ...normalizeCard({ ...data }),
                 user_id: user._id,
-                /* likes: [], */
+
             });
         }
     );

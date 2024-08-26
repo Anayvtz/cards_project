@@ -24,7 +24,7 @@ export const createCard = async (card) => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
     return null;
@@ -54,7 +54,7 @@ export const getMyCards = async () => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
 };
@@ -79,7 +79,7 @@ export const deleteCard = async (cardId) => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
 };
@@ -108,7 +108,7 @@ export const editCard = async (cardId, normalaizedCard) => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
 };
@@ -133,7 +133,7 @@ export const getCard = async (cardId) => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
 };
@@ -159,7 +159,7 @@ export const getCards = async () => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
 };
@@ -184,7 +184,7 @@ export const changeLikeStatus = async (cardId) => {
             // Something happened in setting up the request that triggered an Error
             console.error("Error setting up the request:", error.message);
         }
-        /* return Promise.reject(error.message); */
+
         throw new Error(error.message);
     }
 };
