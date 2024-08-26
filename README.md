@@ -1,8 +1,11 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+this project is created via vite.
+the project is a business cards project which allows to view business cards, like them, create new business card and delete a business card.
+there are two typws of loggedin useres: regular and business.regular user cant add or delete or update business cards while business user can.
 
-Currently, two official plugins are available:
+how to install the project?
+take all the sources and run in terminal: $npm i
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+how to run the project ?
+in the terminal $npm run dev
