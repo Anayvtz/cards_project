@@ -31,10 +31,10 @@ export const createCard = async (card) => {
 };
 
 export const getMyCards = async () => {
-    console.log("get my cards");
+
     try {
         const response = await axios.get(`${apiUrl}/cards/my-cards`);
-        console.log("after get my cards:" + response.data);
+
 
         const data = response.data;
         return data;

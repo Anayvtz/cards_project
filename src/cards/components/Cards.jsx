@@ -19,7 +19,7 @@ export default function Cards({ cards, handleDelete, handleLike, handleEdit }) {
         />
       ))}
 
-      {console.log(user)}
+
       {(user?.user?.isBusiness || user?.user?.isAdmin) ? <AddNewCardButton /> : null}
 
     </Container>

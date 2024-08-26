@@ -9,9 +9,7 @@ import { Container } from "@mui/material";
 import SignupForm from "../components/SignupForm";
 import useUsers from "../hooks/useUsers";
 
-const handleSignup = (userDetails) => {
-  console.log(userDetails);
-};
+
 
 export default function SignupPage() {
   const { handleRegister } = useUsers();

@@ -78,8 +78,7 @@ export default function useCards() {
     async (cardFromClient) => {
       try {
         setIsLoading(true);
-        console.log(JSON.stringify(cardFromClient));
-        console.log(cardFromClient);
+
 
         const card = await createCard(cardFromClient);
         requestStatus(false, null, null, card);

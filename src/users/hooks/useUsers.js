@@ -56,7 +56,7 @@ export default function useUsers() {
         try {
             const normalizeUserInfo = normalizeUser(userInfo);
             const signupData = signup(normalizeUserInfo);
-            console.log(signupData);
+
             await handleLogin({ email: userInfo.email, password: userInfo.password });
         } catch (error) {
 
