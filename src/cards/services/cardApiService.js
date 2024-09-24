@@ -2,7 +2,8 @@ import axios from "axios";
 
 
 //const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2";
-const apiUrl = "http://localhost:8182";
+//const apiUrl = "http://localhost:8182";
+const apiUrl = "https://cardsserver-5bme.onrender.com"
 export const createCard = async (card) => {
 
     try {
