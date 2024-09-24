@@ -27,7 +27,8 @@ export default function useCards() {
   const user = useCurrentUser();
   const setSnack = useSnack();
   const navigate = useNavigate();
-
+//const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards";
+const apiUrl="http://localhost:8182/cards";
   useEffect(() => {
     setQuery(searchParams.get("q") ?? "");
   }, [searchParams]);
@@ -51,7 +52,7 @@ export default function useCards() {
   const getAllCards = useCallback(async () => {
     try {
       let response = await axios.get(
-        "https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards"
+        apiUrl
       );
       setCards(response.data);
       setSnack("success", "All cards are here!");
@@ -64,7 +65,8 @@ export default function useCards() {
   const getCardById = useCallback(async (id) => {
     try {
       const response = await axios.get(
-        `https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`
+      `${apiUrl}/${id}`
+        //`https://monkfish-app-z9uza.ondigitalocean.app/bcard2/cards/${id}`
       );
       const data = response.data;
       setCard(data);

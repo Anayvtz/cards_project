@@ -1,8 +1,8 @@
 import axios from "axios";
 
 
-const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2";
-
+//const apiUrl = "https://monkfish-app-z9uza.ondigitalocean.app/bcard2";
+const apiUrl = "http://localhost:8182";
 export const createCard = async (card) => {
 
     try {
